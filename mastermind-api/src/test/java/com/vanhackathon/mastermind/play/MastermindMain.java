@@ -3,10 +3,11 @@ package com.vanhackathon.mastermind.play;
 import java.util.Scanner;
 
 import com.vanhackathon.mastermind.domain.Game;
+import com.vanhackathon.mastermind.exception.NotYourTurnException;
 
 public class MastermindMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NotYourTurnException {
         Game game = new Game(true);
         System.out.println("DO NOT CHEAT! ;) ");
         System.out.println(game);

@@ -3,6 +3,7 @@ package com.vanhackathon.mastermind.api.v1;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -42,8 +43,9 @@ public class GameController {
 	}
 
 	@RequestMapping(value = "/colors", method = RequestMethod.GET)
-	public ResponseEntity<List<Colors>> getAllColors() {
-		List<Colors> colors = Arrays.asList(Colors.values());
+	public ResponseEntity<List<String>> getAllColors() {
+		List<String> colors = Arrays.asList(Colors.values()).stream().map(c -> c.getColor())
+				.collect(Collectors.toList());
 		return ResponseEntity.status(HttpStatus.OK).body(colors);
 	}
 
@@ -86,8 +88,4 @@ public class GameController {
 		response.sendError(HttpStatus.NOT_FOUND.value(), e.getMessage());
 	}
 
-//	@ExceptionHandler(NotYourTurnException.class)
-//	public void handleNotYourTurn(HttpServletResponse response, Exception e) throws IOException {
-//		response.sendError(HttpStatus.CONFLICT.value(), e.getMessage());
-//	}
 }

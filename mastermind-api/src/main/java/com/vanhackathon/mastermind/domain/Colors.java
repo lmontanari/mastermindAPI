@@ -28,7 +28,7 @@ public enum Colors {
 		}
 		return v;
 	}
-	
+
 	/**
 	 * Get color using its first letter.
 	 * 
@@ -46,5 +46,4 @@ public enum Colors {
 		}
 		return null;
 	}
-
 }
